@@ -29,7 +29,11 @@ const App = () => {
             entryPoints: ['index.js'],
             bundle: true,
             write: false,
-            plugins: [unpkgPathPlugin()]
+            plugins: [unpkgPathPlugin()],
+            define: {
+                'process.env.N0DE_ENV': '"produciton"',
+                global: 'window',
+            },
         });
 
         //console.log(result);
