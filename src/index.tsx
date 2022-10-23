@@ -1,17 +1,20 @@
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import * as esbuild from 'esbuild-wasm';
 import { useState, useEffect, useRef} from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
+import CodeEditor from './components/code-editor';
 
 const App = () => {
     const ref = useRef<any>();
     const iframe = useRef<any>();
     const [input, setInput] = useState('');
-
+    // const [code, setCode] = useState('');
+    
     const startService = async () => {
-        ref.current = await esbuild.startService({
+        ref.current = await esbuild.startService({  
             worker: true,
             wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm',
         });
@@ -66,23 +69,26 @@ const App = () => {
 
     return( 
     <div>
-        <textarea value={input} onChange={(e) => setInput(e.target.value)}></textarea>
+        <CodeEditor 
+          initialValue="const a = 1;" 
+          onChange={(value) => setInput(value)}
+        />
+        <textarea 
+          value={input} 
+          onChange={(e) => setInput(e.target.value)}
+        ></textarea>
         <div>
-            <button onClick={onClick}>Submit</button>
+          <button onClick={onClick}>Submit</button>
         </div>
+        {/* <pre>{code}</pre> */}
         <iframe 
         title="preview" 
         ref={iframe} 
         sandbox="allow-scripts" 
-        srcDoc={html} 
-    />
+        srcDoc={html} />
     </div>
-    );
+  );
 };
-
-const html = `
-<h1>Local HTML doc</h1>
-`;
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(

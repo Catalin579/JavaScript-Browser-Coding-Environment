@@ -30,6 +30,7 @@ export const fetchPlugin = (inputCode: string) => {
 
         build.onLoad({ filter: /.css$/ }, async (args: any) => {
           const { data, request } = await axios.get(args.path);
+          
           const escaped = data
             .replace(/\n/g, '')
             .replace(/"/g, '\\"')
@@ -45,7 +46,6 @@ export const fetchPlugin = (inputCode: string) => {
               contents,
               resolveDir: new URL('./', request.responseURL).pathname,
             };
-            // store response in cache
             await fileCache.setItem(args.path, result);
     
             return result;
@@ -53,13 +53,12 @@ export const fetchPlugin = (inputCode: string) => {
 
         build.onLoad({ filter: /.*/ }, async (args: any) => {
           const { data, request } = await axios.get(args.path);
-
+          
           const result: esbuild.OnLoadResult = {
             loader: 'jsx',
             contents: data,
             resolveDir: new URL('./', request.responseURL).pathname,
           };
-          // store response in cache
           await fileCache.setItem(args.path, result);
     
           return result;
