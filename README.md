@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# React Versions
+
+react: https://www.npmjs.com/package/react/v/17.0.2
+react-dom: https://www.npmjs.com/package/react-dom/v/17.0.2
+@types/react: https://www.npmjs.com/package/@types/react/v/17.0.2
+@types/react-dom: https://www.npmjs.com/package/@types/react-dom/v/17.0.2
+
+
 ## Available Scripts
 
 In the project directory, you can run:
