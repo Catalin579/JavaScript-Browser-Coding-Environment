@@ -3,7 +3,6 @@ import { useRef } from "react";
 import MonacoEditor, { EditorDidMount } from "@monaco-editor/react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
-import React from "react";
 
 interface CodeEditorProps {
   initialValue: string;
