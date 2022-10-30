@@ -22,6 +22,7 @@
     "constants-browserify": "^1.0.0",
     "esbuild-wasm": "0.8.27",
     "flow-parser": "^0.190.1",
+    "immer": "^8.0.0",
     "jscodeshift": "0.11.0",
     "localforage": "^1.10.0",
     "monaco-editor": "^0.34.1",
